@@ -1,5 +1,9 @@
 #include <Arduino.h>
 
+
+/*This example for ADXL356B default,*/
+
+
 #ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
   #define SERIAL SerialUSB
   #define SYS_VOL   3.3
@@ -12,6 +16,10 @@ float cali_data_xy;
 float cali_data_z;
 int16_t scale;
 
+/*This sketch supports ADXL356B/C module.*/
+
+/*You can switch the range to ±10g/±20g for adxl356B,±10g/±40g for adxl356C.*/
+/*If you use another option,such as 10g or 40g,modify this value is OK.*/
 #define MODUEL_RANGE           20
 
 #define MODULE_VOL             1.8
@@ -94,8 +102,8 @@ void setup()
 {
 	SERIAL.begin(115200);
 	#ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
-    analogReadResolution(12);
-    #endif
+	analogReadResolution(12);
+	#endif
 	calibration();
 	SERIAL.print("Scale = ");
 	SERIAL.println(scale);
